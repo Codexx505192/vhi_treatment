@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Header() {
+  const [openMenu, setOpenMenu] = useState(false)
+
     return(
         <header>
               <div className="left_header">
@@ -39,7 +42,7 @@ export default function Header() {
               <div className="right_header">
                <ul className="ul1">
                 <li>
-                   <Link href="#" className="lnk2">
+                   <Link href="/" className="lnk2">
                    Главная
                    </Link>
                 </li>
@@ -51,7 +54,7 @@ export default function Header() {
                 </li>
 
                 <li>
-                   <Link href="#" className="lnk2">
+                   <Link href="/diagnoses" className="lnk2">
                    Диагнозы
                    </Link>
                 </li>
@@ -78,9 +81,55 @@ export default function Header() {
                 </li>
                </ul>
 
-               <div className="menu">
+               <div className="header_menu">
+                <ul className={`header_list ${openMenu ? "active" : ""}`}>
+                  <li className="header_itm">
+                  <Link href="#" className="lnk5">
+                   Главная
+                  </Link>
+                  </li>
+
+                  <li className="header_itm">
+                  <Link href="/news" className="lnk5">
+                   Новости
+                  </Link>
+                  </li>
+
+                  <li className="header_itm">
+                  <Link href="/diagnoses" className="lnk5">
+                   Диагнозы
+                  </Link>
+                  </li>
+
+                  <li className="header_itm">
+                  <Link href="#" className="lnk5">
+                   Услуги
+                  </Link>
+                  </li>
+
+                  <li className="header_itm">
+                  <Link href="#" className="lnk5">
+                   Клиники
+                  </Link>
+                  </li>
+
+                  <li className="header_itm">
+                  <Link href="#" className="lnk5">
+                   Диагнозы
+                  </Link>
+                  </li>
+
+                    <li className="header_itm">
+                  <Link href="#" className="lnk5" onClick={() => setOpenMenu(false)}>
+                   Выйти
+                  </Link>
+                  </li>
+                </ul>
+                <div className="menu" onClick={() => setOpenMenu(!openMenu)}>
                 <img src="./icons/menu.png" alt="menu" />
                </div>
+               </div>
+               
               </div>
             </header>
     )
